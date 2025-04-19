@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+:root {
+    /* 🎨 Cores */
+    --color-primary: #fdf1ea;
+    --color-secondary: #574747;
+    --color-accent: #ff83a0;
+    --color-text: #3e3e3e;
+    --color-white: #ffffff;
+  
+    /* 🧱 Espaçamentos */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+  
+    /* 🔤 Tipografia */
+    --font-main: 'Montserrat', sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 2rem;
+  
+    /* ✨ Transições */
+    --transition: all 0.3s ease;
+    --border-radius: 8px;
+  }
