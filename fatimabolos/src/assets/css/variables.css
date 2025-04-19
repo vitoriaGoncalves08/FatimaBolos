@@ -1,16 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 :root {
     /* 🎨 Cores */
-    --color-primary: #fdf1ea;
-    --color-secondary: #574747;
-    --color-accent: #ff83a0;
-    --color-text: #3e3e3e;
+    --color-primary: #FF8BA7;
+    --color-primary-salmon: #FFC0AD;
+    --color-primary-light: #FFC6C7;
+
+    --color-secondary-100:#745D56;
+    --color-secondary-200:#978E90;
+    --color-secondary-300:#786B6B;
+    --color-secondary-400:#594A4E;
+    --color-secondary-500:#55423D;
+    --color-secondary-600:#33272A;
+    --color-secondary-700:#33272A;
+    --color-secondary-800:#140D0B;
+
     --color-white: #ffffff;
-  
+    --color-white-50: #D9D9D9;
+    --color-white-card:#FFFFFE;
+    --color-white-pink:#FAEEE7;
+    --color-white-100:#FCFCFC;
+    --color-white-200:#FFF7F7;
+    --color-white-gray:#F7F7FC;
+    --color-white-dark: #D9D9D9;
+    --color-white-text:#FFF7F7;
+
+    --color-warning:#EAAC30;
+    --color-warning-strong:#946300;
+    --color-warning-weak:#FFDF9A;
+    --color-warning-bgstrong:#FFE6B0;
+    --color-warning-gb:#FFF8E9;
+
+    --color-danger:#D24040;
+    --color-danger-strong:#B91C1C;
+    --color-danger-weak:#F87171;
+    --color-danger-bgstrong:#FCA5A5;
+    --color-danger-gb:#FEE2E2;
+
+    --color-success:#008A00;
+    --color-success-strong:#7FFB50;
+    --color-success-weak:#A6F787;
+    --color-success-bgstrong:#CBFFAE;
+    --color-success-gb:#EAF9DE;
+    
+    
     /* 🧱 Espaçamentos */
     --spacing-xs: 4px;
-    --spacing-sm: 8px;
+    --spacing-s: 8px;
+    --spacing-sm: 12px;
     --spacing-md: 16px;
+    --spacing-l: 20px;
     --spacing-lg: 24px;
     --spacing-xl: 32px;
   
