@@ -16,12 +16,10 @@ export const Header: React.FC = () => {
 
         <img src={Logo} alt="Fátima Bolos" className="logo" />
 
-        {/* Links no desktop */}
         <nav className="links desktop-only">
           <NavLinks />
         </nav>
 
-        {/* Links no mobile com animação */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div

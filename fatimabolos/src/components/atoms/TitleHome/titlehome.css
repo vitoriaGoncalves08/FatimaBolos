@@ -1,0 +1,44 @@
+.title-home {
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  line-height: 1.4;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  font-family: 'Zen Old Mincho';
+  font-weight: 800;
+}
+
+.rotating-words {
+  display: inline-block;
+  height: 50px;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.rotating-words .word {
+  display: block;
+  height: 50px;
+  color: var(--color-primary);
+  animation: rotate-words 10s ease infinite;
+  font-family: 'Zen Old Mincho';
+  
+}
+
+@keyframes rotate-words {
+  0%, 20% {
+    transform: translateY(0);
+  }
+  25%, 45% {
+    transform: translateY(-50px);
+  }
+  50%, 70% {
+    transform: translateY(-100px);
+  }
+  75%, 95% {
+    transform: translateY(-150px);
+  }
+  100% {
+    transform: translateY(-200px);
+  }
+}

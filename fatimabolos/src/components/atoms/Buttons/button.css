@@ -16,6 +16,10 @@
   background-color: var(--color-secondary-400);
 }
 
+.btn.default.pink {
+  background-color: var(--color-primary);
+}
+
 .btn:hover {
   opacity: 0.9;
 }
@@ -47,6 +51,10 @@
 
 
 @media (max-width: 779px) {
+  .btn.default.pink {
+    align-self: flex-end;
+    margin-top: var(--spacing-sm);
+  }
   .btn.default.brown {
     align-self: flex-end;
     margin-top: var(--spacing-sm);
@@ -55,6 +63,10 @@
 
 @media (max-width: 480px) {
   .btn.default.brown {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+  .btn.default.pink {
     font-size: var(--font-size-sm);
     padding: var(--spacing-xs) var(--spacing-md);
   }
