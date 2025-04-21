@@ -1,6 +1,7 @@
 import React from 'react';
 import { TitleHome } from '../../atoms/TitleHome/titlehome';
-import ImageLogo from '../../../assets/img/image-home.svg';
+import ImageHome from '../../../assets/img/image-home-no-line.svg';
+import ImageLine from '../../../assets/img/image-home-line.svg';
 import './home.css';
 import { Button } from '../../atoms/Buttons/button';
 
@@ -19,7 +20,10 @@ export const Home: React.FC = () => {
         </Button>
       </div>
       <div className='right-content'>
-        <img src={ImageLogo} alt="Fátima Bolos" className="cake-image" />
+        <div className="image-container">
+          <img src={ImageLine} alt="Linha decorativa" className="cake-line" />
+          <img src={ImageHome} alt="Bolo Fátima Bolos" className="cake-image" />
+        </div>
       </div>
     </section>
   );

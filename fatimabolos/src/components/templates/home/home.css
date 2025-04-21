@@ -1,12 +1,10 @@
 .container-home {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  padding: 6rem 0rem;
-  gap: 5%;
-  width: fit-content; 
-  margin: 0 auto ;
-  margin-top: 30px;
+  max-width: 1000vh;
+  margin: 5rem;
+  margin-top: 100px;
 }
 
 .left-content {
@@ -21,35 +19,55 @@
   flex: 1;
   display: flex;
   justify-content: center;
+  position: relative;
+  max-width: 800px;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.cake-line {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 60%;
+  height: 60%;
+  z-index: 2;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  animation: spin 12s linear infinite;
+  transform: translate(-55%, -58%);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .cake-image {
+  position: relative;
+  z-index: 1;
   max-width: 100%;
   height: auto;
-  max-height: 800px;
-}
-
-@keyframes float{
-	0%,100%{
-		transform:translatey(-70)
-	}
-	50%{
-		transform:translatey(-20px)
-	}
-}
-.cake-image {
-     animation: float 8s ease-in-out infinite;
+  display: block;
 }
 
 .title{
   max-width: 500px;
 }
+
 .description {
   margin: 1.5rem 0 2rem;
-  line-height: 1.6;
   color: var(--color-secondary-300);
   font-size: 1.1rem;
   text-align: left;
+  line-height: 25px;
 }
 
 @media (max-width: 768px) {
@@ -65,7 +83,11 @@
     text-align: center;
   }
   
-  .cake-image {
+  .cake-line, .cake-line {
     max-height: 350px;
+  }
+  
+  .cake-line {
+    max-width: 70%;
   }
 }

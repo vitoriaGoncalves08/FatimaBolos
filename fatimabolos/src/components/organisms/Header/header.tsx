@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../../atoms/Buttons/button';
 import { NavLinks } from '../../molecules/NavLinks/navlinks';
-import Logo from '../../../assets/img/Logo.svg';
+import Logo from '../../../assets/img/logo.svg';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { AnimatePresence, motion } from 'framer-motion';
