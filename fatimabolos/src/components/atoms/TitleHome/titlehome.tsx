@@ -1,4 +1,3 @@
-import React from 'react';
 import './titlehome.css';
 
 export const TitleHome = () => {
