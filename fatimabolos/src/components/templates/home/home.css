@@ -1,91 +1,71 @@
 .container-home {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 100vh;
-    margin: 0 auto;
-    padding: 9rem 1rem;
-    gap: 4rem;
-  }
-  
-  .right-content {
-    flex: 1;
-    max-width: 500px;
-    display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 0rem;
+  gap: 5%;
+  width: fit-content; 
+  margin: 0 auto ;
+  margin-top: 30px;
+}
+
+.left-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 700px;
+}
+
+.right-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.cake-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 800px;
+}
+
+@keyframes float{
+	0%,100%{
+		transform:translatey(-70)
+	}
+	50%{
+		transform:translatey(-20px)
+	}
+}
+.cake-image {
+     animation: float 8s ease-in-out infinite;
+}
+
+.title{
+  max-width: 500px;
+}
+.description {
+  margin: 1.5rem 0 2rem;
+  line-height: 1.6;
+  color: var(--color-secondary-300);
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .container-home {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 3rem;
+    padding: 2rem 1.5rem;
   }
   
-  .left-content {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
+  .left-content, .right-content {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
   }
   
   .cake-image {
-    width: 800px;
+    max-height: 350px;
   }
-  
-  .title-home {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
-  }
-  
-  .rotating-words {
-    display: inline-block;
-    height: 60px;
-    overflow: hidden;
-    vertical-align: top;
-    position: relative;
-  }
-  
-  .description {
-    margin: 1.5rem 0 2rem;
-    line-height: 1.6;
-    color: var(--color-text-secondary);
-    font-size: 1.1rem;
-    text-align: left;
-  }
-  
-  .cta-button {
-    background-color: var(--color-primary);
-    color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  }
-  
-  @media (max-width: 768px) {
-    .container-home {
-      flex-direction: column-reverse;
-      gap: 2rem;
-      padding: 5rem;
-    }
-    
-    .right-content {
-      max-width: 100%;
-      align-items: center;
-      text-align: center;
-    }
-    
-    .description {
-      text-align: center;
-    }
-    
-    .left-content {
-      justify-content: center;
-    }
-    
-    .cake-image {
-      max-height: 300px;
-    }
-  }
+}

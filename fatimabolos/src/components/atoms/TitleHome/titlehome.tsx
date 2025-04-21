@@ -6,6 +6,7 @@ export const TitleHome = () => {
 
   return (
     <h1 className="title-home">
+      Nós temos
       <div className="rotating-words">
         {words.map((word, index) => (
           <span key={index} className="word">{word}</span>
