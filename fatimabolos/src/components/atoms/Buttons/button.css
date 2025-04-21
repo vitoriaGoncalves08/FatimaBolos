@@ -67,8 +67,4 @@
     font-size: var(--font-size-sm);
     padding: var(--spacing-xs) var(--spacing-md);
   }
-  .btn.default.pink {
-    font-size: var(--font-size-sm);
-    padding: var(--spacing-xs) var(--spacing-md);
-  }
 }

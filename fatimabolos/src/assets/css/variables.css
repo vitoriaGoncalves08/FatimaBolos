@@ -60,6 +60,8 @@
     --font-size-md: 1rem;
     --font-size-lg: 1.25rem;
     --font-size-xl: 2rem;
+    --font-size-xxl: 3rem;
+    --font-size-xxxl: 4rem;
   
     /* ✨ Transições */
     --transition: all 0.3s ease;

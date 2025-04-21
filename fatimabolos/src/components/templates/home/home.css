@@ -85,9 +85,8 @@
 }
 
 @media (max-width: 940px) {
-
   .container-home {
-    margin-top: 100px;
+    margin-top: 150px;
   }
   .right-content {
     max-width: 500px;
@@ -100,6 +99,10 @@
 }
 
 @media (max-width: 768px) {  
+  .container-home {
+    margin-top: 150px;
+  }
+
   .cake-line, .cake-line {
     max-height: 350px;
   }
@@ -115,19 +118,19 @@
 @media (max-width: 527px) {
   .container-home {
     max-width: max-content;
-    margin: 100px 1rem;
+    margin: 150px 1rem;
   }
    
   .title-home {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
   }
 
   .rotating-words .word{
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
   }
 
   .description {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
   }
   .right-content {
     max-width: 350px;
@@ -140,16 +143,16 @@
     margin: 100px 1rem;
   }
    .rotating-words .word{
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-xl);
   }
 
   .description {
-    font-size: 0.6rem;
-    line-height: 1rem;
+    font-size: var(--font-size-md);
+    line-height: 1.5rem;
     margin-bottom: 1rem;
   }
   .right-content {
-    max-width: 300px;
+    min-width: 360px;
   }
   .image-container {
     margin-top: -50px;
