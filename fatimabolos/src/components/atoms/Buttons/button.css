@@ -53,7 +53,7 @@
 
 @media (max-width: 779px) {
   .btn.default.pink {
-    align-self: flex-end;
+    align-self: flex-start;
     margin-top: var(--spacing-sm);
   }
   .btn.default.brown {
