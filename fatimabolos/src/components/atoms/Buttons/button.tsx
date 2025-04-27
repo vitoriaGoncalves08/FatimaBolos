@@ -11,7 +11,7 @@ type ButtonProps = {
   className?: string;
 };
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   children,
   variant = 'default',
   icon,
@@ -19,7 +19,7 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   disabled = false,
   className = '',
-}) => {
+}: ButtonProps) => {
   return (
     <button
       className={`btn ${variant} ${className}`}

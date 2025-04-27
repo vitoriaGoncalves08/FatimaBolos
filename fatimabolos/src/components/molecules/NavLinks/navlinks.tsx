@@ -1,9 +1,8 @@
-import React from 'react';
 import "./navlinks.css";
 
 const links = ['Sobre nós', 'Produtos', 'Encomenda', 'Dúvidas', 'Contato'];
 
-export const NavLinks: React.FC = () => {
+export const NavLinks = () => {
   return (
     <>
       {links.map((link, index) => (

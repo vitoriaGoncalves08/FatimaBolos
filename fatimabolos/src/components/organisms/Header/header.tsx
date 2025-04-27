@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../../atoms/Buttons/button';
 import { NavLinks } from '../../molecules/NavLinks/navlinks';
 import Logo from '../../../assets/img/logo-bolo.svg';
@@ -7,7 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { AnimatePresence, motion } from 'framer-motion';
 import './header.css';
 
-export const Header: React.FC = () => {
+export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (

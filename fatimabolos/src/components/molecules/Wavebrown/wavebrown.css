@@ -1,0 +1,107 @@
+/* Container principal */
+.container-card-brown {
+  position: relative;
+  width: 100%;
+  padding: 35rem 0 0rem; /* Reduzi o padding inferior */
+  margin: 0 auto;
+  overflow: visible; /* Mudado para visible */
+}
+
+/* Imagem de fundo (wave) - Versão corrigida */
+.wave-background {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  z-index: 1;
+  object-fit: fill; /* Mudado para fill */
+  object-position: bottom;
+}
+
+/* Container dos cards */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: -35rem;
+}
+
+/* Cards individuais - estilo da primeira imagem */
+.card-brown {
+  background-color: var(--color-secondary-100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  min-height: 280px;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Conteúdo dos cards */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 1rem;
+}
+
+.card-icons {
+  font-size: 2.5rem;
+  color: var(--color-white-dark);
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  color: var(--color-white-dark);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: var(--color-white-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .cards {
+    flex-wrap: wrap;
+  }
+  
+  .card-brown {
+    max-width: calc(50% - 1rem);
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .card-brown {
+    max-width: 100%;
+    min-height: 220px;
+  }
+  
+  .wave-background {
+    min-height: 100px;
+  }
+}

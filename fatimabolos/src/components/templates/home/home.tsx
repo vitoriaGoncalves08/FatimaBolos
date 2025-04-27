@@ -1,11 +1,10 @@
-import React from 'react';
 import { TitleHome } from '../../atoms/TitleHome/titlehome';
 import ImageHome from '../../../assets/img/image-home-no-line.svg';
 import ImageLine from '../../../assets/img/image-home-line.svg';
 import './home.css';
 import { Button } from '../../atoms/Buttons/button';
 
-export const Home: React.FC = () => {
+export const Home = () => {
   return (
     <section className='container-home'>
       <div className='left-content'>

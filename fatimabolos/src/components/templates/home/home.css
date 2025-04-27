@@ -5,6 +5,7 @@
   max-width: 1000vh;
   margin: 0 7rem;
   margin-top: 100px;
+  overflow-x: hidden;
 }
 
 .left-content {
@@ -127,9 +128,11 @@
     font-size: var(--font-size-md);
     line-height: 1.5rem;
     margin-bottom: 1rem;
+    text-align: justify;
   }
   .right-content {
-    min-width: 360px;
+    min-width: 450px;
+    margin-left: 3rem;
   }
   .image-container {
     margin-top: -50px;
