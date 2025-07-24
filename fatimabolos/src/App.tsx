@@ -1,7 +1,8 @@
 
-import { Wavebrown } from './components/molecules/Wavebrown/wavebrown';
+import { CardsBrown  } from './components/molecules/CardsBrown/cardsbrown';
 import { Header } from './components/organisms/Header/header';
 import { Home } from './components/templates/home/home';
+import { AboutUs } from './components/templates/aboutUs/aboutUs';
 
 function App() {
 
@@ -9,8 +10,8 @@ function App() {
     <>
     <Header/>
     <Home/>
-    <Wavebrown />
-    <Home/>
+    <CardsBrown />
+    <AboutUs/>
     </>
   )
 }

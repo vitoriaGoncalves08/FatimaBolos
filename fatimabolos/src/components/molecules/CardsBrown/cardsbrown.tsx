@@ -1,17 +1,10 @@
-import Wave from '../../../assets/img/wave.svg';
 import { Cake, Verified, EmojiEvents } from '@mui/icons-material';
-import './wavebrown.css';
+import './cardsbrown.css';
 
-export const Wavebrown = () => {
+export const CardsBrown = () => {
   return (
     <div className='container-card-brown'>
-      {/* Imagem wave como fundo completo */}
-      <img 
-        src={Wave} 
-        alt="Onda decorativa" 
-        className='wave-background'
-      />
-      
+    
       {/* Container dos cards */}
       <div className='cards'>
         {/* Card Sabor */}

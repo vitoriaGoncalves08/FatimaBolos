@@ -1,40 +1,27 @@
 /* Container principal */
 .container-card-brown {
   position: relative;
-  width: 100%;
-  padding: 35rem 0 0rem; /* Reduzi o padding inferior */
+  width: 90%;
+  max-width: 100%;
+  padding: 8rem 5% 0;
   margin: 0 auto;
-  overflow: visible; /* Mudado para visible */
-}
-
-/* Imagem de fundo (wave) - Versão corrigida */
-.wave-background {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  min-height: 120px;
-  z-index: 1;
-  object-fit: fill; /* Mudado para fill */
-  object-position: bottom;
+  overflow: visible;
+  box-sizing: border-box;
 }
 
 /* Container dos cards */
 .cards {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-between;
   position: relative;
   z-index: 2;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: -35rem;
 }
 
 /* Cards individuais - estilo da primeira imagem */
 .card-brown {
-  background-color: var(--color-secondary-100);
+  background-color: var(--clor-secondary-light);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,19 +46,19 @@
 
 .card-icons {
   font-size: 2.5rem;
-  color: var(--color-white-dark);
   margin-bottom: 0.5rem;
+  color: var(--color-primary);
 }
 
 .card-title {
-  color: var(--color-white-dark);
+  color: var(--color-white);
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
 .card-text {
-  color: var(--color-white-text);
+  color: var(--color-white-dark);
   font-size: 1rem;
   line-height: 1.6;
   padding: 0 0.5rem;

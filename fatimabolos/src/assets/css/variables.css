@@ -7,6 +7,7 @@
     --color-primary-salmon: #FFC0AD;
     --color-primary-light: #FFC6C7;
 
+    --clor-secondary-light: #88726B;
     --color-secondary-100:#745D56;
     --color-secondary-200:#978E90;
     --color-secondary-300:#786B6B;
@@ -19,7 +20,8 @@
     --color-white: #ffffff;
     --color-white-50: #D9D9D9;
     --color-white-card:#FFFFFE;
-    --color-white-pink:#FAEEE7;
+    /* --color-white-pink:#FAEEE7; */
+    --color-white-pink:#fae6e7;
     --color-white-100:#FCFCFC;
     --color-white-200:#FFF7F7;
     --color-white-gray:#F7F7FC;

@@ -2,10 +2,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  max-width: 1000vh;
-  margin: 0 7rem;
-  margin-top: 100px;
+  max-width: 100%;
+  width: 90%;
+  margin: 100px auto 0;
+  padding: 0 5%;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .left-content {
