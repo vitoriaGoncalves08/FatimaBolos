@@ -27,7 +27,7 @@ export const CardsBrown = () => {
         
         {/* Card Qualidade */}
         <div className='card-brown'>
-          <div className="card-content">
+          <div className='card-content'>
             <EmojiEvents className='card-icons'/>
             <h3 className='card-title'>Qualidade</h3>
             <p className='card-text'>Cada produto é preparado com ingredientes selecionados e um cuidado especial em cada detalhe.</p>

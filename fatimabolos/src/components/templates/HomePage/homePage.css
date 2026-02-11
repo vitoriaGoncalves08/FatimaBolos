@@ -1,0 +1,29 @@
+.home-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-section {
+  min-height: 100vh;
+  /* Hero section styles will be added here */
+}
+
+/* Ensure smooth scrolling between sections */
+.home-page section {
+  scroll-margin-top: 80px; /* For fixed header if any */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-page section {
+    scroll-margin-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page section {
+    scroll-margin-top: 50px;
+  }
+}

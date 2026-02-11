@@ -24,10 +24,10 @@ const CardProducts: React.FC<CardProductsProps> = ({
       </div>
       <div className="card-content">
         <h3 className="card-title">{title}</h3>
-        <p className="card-description">{description}</p>
-        <div className="card-footer">
+        {/* <p className="card-description">{description}</p> */}
+        <p className="card-price">{price}</p>
           <button className="card-button">Comprar</button>
-        </div>
+       
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
 /* Container principal */
 .container-card-brown {
   position: relative;
-  width: 90%;
-  max-width: 100%;
-  padding: 8rem 5% 0;
+  width: 100%;
+  max-width: 1600px;
+  padding: 6rem 20px 0;
   margin: 0 auto;
   overflow: visible;
   box-sizing: border-box;
@@ -11,12 +11,14 @@
 
 /* Container dos cards */
 .cards {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   position: relative;
   z-index: 2;
-  max-width: 1500px;
+  max-width: 1400px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
 /* Cards individuais - estilo da primeira imagem */
@@ -27,11 +29,11 @@
   align-items: center;
   text-align: center;
   width: 100%;
-  max-width: 350px;
   min-height: 280px;
-  padding: 2rem;
-  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Conteúdo dos cards */
@@ -50,7 +52,7 @@
   color: var(--color-primary);
 }
 
-.card-title {
+.card-brown .card-title {
   color: var(--color-white);
   font-size: 1.5rem;
   font-weight: 600;
@@ -64,31 +66,85 @@
   padding: 0 0.5rem;
 }
 
+.card-brown:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
 /* Responsividade */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .cards {
-    flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
   
   .card-brown {
-    max-width: calc(50% - 1rem);
+    padding: 1.8rem 1.2rem;
     min-height: 260px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .cards {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 800px;
   }
   
   .card-brown {
-    max-width: 100%;
-    min-height: 220px;
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-card-brown {
+    padding: 4rem 16px 0;
   }
   
-  .wave-background {
-    min-height: 100px;
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 500px;
+  }
+  
+  .card-brown {
+    min-height: 220px;
+    padding: 1.5rem;
+  }
+  
+  .card-icons {
+    font-size: 2.2rem;
+  }
+  
+  .card-brown .card-title {
+    font-size: 1.3rem;
+  }
+  
+  .card-text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-card-brown {
+    padding: 3rem 12px 0;
+  }
+  
+  .card-brown {
+    padding: 1.2rem;
+    min-height: 200px;
+  }
+  
+  .card-icons {
+    font-size: 2rem;
+  }
+  
+  .card-brown .card-title {
+    font-size: 1.2rem;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 }
