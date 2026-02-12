@@ -3,6 +3,7 @@ import { AboutUs } from '../aboutUs/aboutUs';
 import ProductsSection from '../productsSection/productsSection';
 import { FaqSection } from '../../organisms/FaqSection/FaqSection';
 import { ContactUs } from '../../organisms/ContactUs/ContactUs';
+import { OrderForm } from '../../organisms/OrderForm/OrderForm';
 import { CardsBrown } from '../../molecules/CardsBrown/cardsbrown';
 import { Footer } from '../../organisms/Footer/Footer';
 import { Home } from '../../templates/home/home';
@@ -17,6 +18,7 @@ export const HomePage: React.FC = () => {
       <CardsBrown />
       <AboutUs />
       <ProductsSection />
+      <OrderForm />
       <FaqSection />
       <ContactUs />
       <Footer />

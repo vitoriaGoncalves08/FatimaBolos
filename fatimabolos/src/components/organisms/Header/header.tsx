@@ -21,6 +21,11 @@ const handleSmoothScroll = (elementId: string) => {
   }
 };
 
+const handleSmoothScrollAndCloseMenu = (elementId: string, setIsMenuOpen: (open: boolean) => void) => {
+  handleSmoothScroll(elementId);
+  setIsMenuOpen(false);
+};
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -44,12 +49,12 @@ export const Header = () => {
               transition={{ duration: 0.5 }}
             >
               <nav className="links">
-                <NavLinks />
+                <NavLinks onCloseMenu={() => setIsMenuOpen(false)} />
               </nav>
               <Button 
                 variant="default" 
                 className="brown mobile-button"
-                onClick={() => handleSmoothScroll('sobre-nos')}
+                onClick={() => handleSmoothScrollAndCloseMenu('sobre-nos', setIsMenuOpen)}
               >
                 Saiba Mais
               </Button>

@@ -1,0 +1,345 @@
+.order-form-section {
+  background-color: var(--color-background);
+  padding: 4rem 0;
+}
+
+.order-form-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  /* background-image: url('../../../assets/img/wave-encomenda.svg'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--border-radius-lg, 12px);
+  min-height: 600px;
+}
+
+.order-header {
+  text-align: center;
+  padding-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+/* Progress Menu */
+.progress-menu {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 0 2rem;
+}
+
+.progress-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.progress-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-secondary-200);
+  color: var(--color-secondary-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-family: var(--font-main);
+  transition: var(--transition);
+}
+
+.progress-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-secondary-100);
+  font-family: var(--font-main);
+  font-weight: 500;
+}
+
+.progress-item.active .progress-number {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.progress-item.completed .progress-number {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+.progress-item.active .progress-label {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Step Content */
+.order-content {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.step-content h3 {
+  text-align: center;
+  color: var(--color-secondary-100);
+  font-family: var(--font-main);
+  font-size: var(--font-size-lg);
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+/* Calendar */
+.calendar-container {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  width: 600px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.calendar-nav {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-secondary-100);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.calendar-nav:hover {
+  background-color: var(--color-secondary-200);
+}
+
+.calendar-header h4 {
+  color: var(--color-secondary-100);
+  font-family: var(--font-main);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  margin: 0;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-secondary-100);
+  font-family: var(--font-main);
+  padding: 0.5rem;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-secondary-200);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: var(--font-size-sm);
+  transition: var(--transition);
+  background-color: var(--color-white);
+}
+
+.calendar-day:hover:not(.disabled):not(.empty) {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.calendar-day.selected {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.calendar-day.today {
+  border-color: var(--color-primary);
+  font-weight: 600;
+}
+
+.calendar-day.disabled {
+  color: var(--color-secondary-300);
+  cursor: not-allowed;
+  background-color: var(--color-white-gray);
+}
+
+.calendar-day.empty {
+  cursor: default;
+  border: none;
+  background: none;
+}
+
+/* Time Slots */
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.time-slot {
+  padding: 1rem;
+  border: 2px solid var(--color-secondary-200);
+  border-radius: var(--border-radius);
+  text-align: center;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  color: var(--color-secondary-100);
+  background-color: var(--color-white);
+  transition: var(--transition);
+}
+
+.time-slot:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.time-slot.selected {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+/* Selected Info */
+.selected-info {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--color-primary-light);
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+}
+
+.selected-info p {
+  margin: 0;
+  color: var(--color-secondary-100);
+  font-family: var(--font-main);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+}
+
+/* Actions */
+.order-actions {
+  text-align: center;
+  padding: 2rem;
+}
+
+.btn-next {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  min-width: 200px;
+}
+
+.btn-next:hover:not(:disabled) {
+  background-color: #ff6b9d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+.btn-next:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .order-form-section {
+    padding: 2rem 0;
+  }
+  
+  .order-form-container {
+    padding: 0 1rem;
+    min-height: 500px;
+  }
+  
+  .order-header {
+    padding-top: 2rem;
+  }
+  
+  .progress-menu {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .progress-number {
+    width: 35px;
+    height: 35px;
+    font-size: 0.875rem;
+  }
+  
+  .progress-label {
+    font-size: 0.75rem;
+  }
+  
+  .order-content {
+    padding: 1.5rem;
+  }
+  
+  .calendar-container {
+    padding: 1rem;
+  }
+  
+  .time-slots {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-menu {
+    gap: 0.5rem;
+  }
+  
+  .progress-label {
+    display: none;
+  }
+  
+  .time-slots {
+    grid-template-columns: 1fr;
+  }
+  
+  .calendar-weekdays,
+  .calendar-days {
+    gap: 0.25rem;
+  }
+  
+  .calendar-day {
+    font-size: 0.75rem;
+  }
+}
