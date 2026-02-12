@@ -2,10 +2,16 @@ import React from 'react';
 import CardProducts from '../../molecules/CardProducts/CardProducts';
 import './productsSection.css';
 import { Title } from '../../atoms/Title/title';
-import boloFestaLaco from '../../../assets/img/bolo-festa-laço.png';
-import boloFestaBorboleta from '../../../assets/img/bolo-festa-borboleta.png';
-import boloFestaNinho from '../../../assets/img/bolo-festa-ninho.png';
-import boloPodeChocolate from '../../../assets/img/bolo-pode-chocolate.png';
+import boloFestaLaco from '../../../assets/img/bolos/laco.svg';
+import boloFestaBorboleta from '../../../assets/img/bolos/bolo-festa-borboleta.png';
+import boloFestaNinho from '../../../assets/img/bolos/bolo-festa-ninho.png';
+import boloPoteChocolate from '../../../assets/img/bolos/bolo-pode-chocolate.png';
+import boloInfantil from '../../../assets/img/bolos/tematico-infantil.png';
+import salgadinhoFesta from '../../../assets/img/bolos/salgados.png';
+import tortaLimao from '../../../assets/img/bolos/torta-limao-sem.png';
+import boloChocolate from '../../../assets/img/bolos/chocolate.png';
+import boloAdulto from '../../../assets/img/bolos/adulto2.png';
+import boloBasico from '../../../assets/img/bolos/simples.png';
 
 interface Product {
   id: number;
@@ -22,82 +28,82 @@ const ProductsSection: React.FC = () => {
     {
       id: 1,
       image: boloFestaLaco,
-      title: 'Bolo de Chocolate',
-      description: 'Delicioso bolo de chocolate com cobertura de ganache e morangos frescos.',
-      price: '2kg',
+      title: 'Bolo de Côco',
+      description: 'Delicioso bolo de côco cremoso com leite condensado.',
+      price: '3kg',
       category: 'Festa'
     },
     {
       id: 2,
       image: boloFestaBorboleta,
-      title: 'Bolo de Cenoura',
-      description: 'Bolo de cenoura fofinho com cobertura de chocolate meio amargo.',
-      price: 'R$ 39,90',
+      title: 'Bolo de Morango',
+      description: 'Bolo de baunilha com recheio de morango e leite ninho.',
+      price: '3kg',
       category: 'Festa',
     },
     {
       id: 3,
       image: boloFestaNinho,
       title: 'Bolo de Ninho',
-      description: 'Bolo de limão com recheio de mousse de limão e merengue italiano.',
+      description: 'Bolo de leite ninho que pode acompanhar frutas a escolha.',
       price: '5kg',
       category: 'Festa'
     },
     {
-      id: 4,
-      image: boloPodeChocolate,
-      title: 'Bolo de Pote',
-      description: 'Bolo branco com recheio de creme de baunilha e morangos frescos.',
-      price: '300g',
+      id: 7,
+      image: boloBasico,
+      title: 'Bolo com Papel Arroz',
+      description: 'Bolo básico ou com papel arroz de vários sabores.',
+      price: '2,5kg',
       category: 'Festa'
     },
-     {
+    {
       id: 5,
-      image: boloFestaLaco,
-      title: 'Bolo Red Velvet',
-      description: 'Bolo Red Velvet com cream cheese frosting e decorado com migalhas.',
-      price: 'R$ 55,90',
+      image: boloChocolate,
+      title: 'Bolo de Chocolate',
+      description: 'Bolo de chocolate para festa com recheio a gosto.',
+      price: '4,5kg',
       category: 'Festa'
     },
     {
       id: 6,
-      image: boloFestaBorboleta,
-      title: 'Bolo de Coco',
-      description: 'Bolo de coco com cobertura de coco ralado e recheio cremoso.',
-      price: 'R$ 42,90',
+      image: boloAdulto,
+      title: 'Bolo Adulto',
+      description: 'Bolo temático com topper adulto, vários sabores.',
+      price: '3,5kg',
       category: 'Festa'
     },
-    {
-      id: 7,
-      image: boloFestaNinho,
-      title: 'Bolo Prestígio',
-      description: 'Bolo de chocolate com recheio de coco e cobertura de brigadeiro.',
-      price: 'R$ 47,90',
+     {
+      id: 4,
+      image: boloInfantil,
+      title: 'Bolo Infantil',
+      description: 'Bolo com topper de tema infantil, vários sabores.',
+      price: '5kg',
       category: 'Festa'
     },
     {
       id: 8,
-      image: boloPodeChocolate,
-      title: 'Bolo de Maracujá',
-      description: 'Bolo de maracujá com recheio de mousse e calda da fruta.',
-      price: 'R$ 44,90',
+      image: boloPoteChocolate,
+      title: 'Bolo de Pote',
+      description: 'Bolo de chocolate, com calda de chocolate e granulado.',
+      price: '300g',
       category: 'Festa'
     },
     {
       id: 9,
-      image: boloFestaLaco,
-      title: 'Bolo Formigueiro',
-      description: 'Bolo de chocolate com cobertura e recheio de brigadeiro com granulado.',
-      price: 'R$ 41,90',
-      category: 'Festa'
+      image: salgadinhoFesta,
+      title: 'Salgados de Festa',
+      description: 'Mini salgados para festa, sortidos e a escolha.',
+      price: 'Cento - R$60',
+      category: 'Salgados'
     },
     {
       id: 10,
-      image: boloFestaBorboleta,
-      title: 'Bolo de Fubá',
-      description: 'Bolo de fubá cremoso com goiabada e queijo ralado.',
-      price: 'R$ 38,90',
-      category: 'Festa'
+      image: tortaLimao,
+      title: 'Torta de limão',
+      description: 'Torta de limão e banoffe de tamanhos pequeno e grande.',
+      price: '1,5kg',
+      category: 'Tortas'
     },
   ];
 
@@ -106,7 +112,7 @@ const ProductsSection: React.FC = () => {
       <div className="container">
         <div className="section-header">
           <Title title="Nossos Produtos" id="nossos-produtos" />
-          <p className="section-subtitle">Conheça nossos deliciosos Festa feitos com carinho</p>
+          <p className="section-subtitle">Conheça nossas delícias feitas com carinho</p>
         </div>
         
         <div className="products-grid">

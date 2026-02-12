@@ -7,6 +7,20 @@ import CloseIcon from '@mui/icons-material/Close';
 import { AnimatePresence, motion } from 'framer-motion';
 import './header.css';
 
+const handleSmoothScroll = (elementId: string) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    const headerHeight = 80; // Account for fixed header height
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - headerHeight;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+};
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -32,14 +46,22 @@ export const Header = () => {
               <nav className="links">
                 <NavLinks />
               </nav>
-              <Button variant="default" className="brown mobile-button">
+              <Button 
+                variant="default" 
+                className="brown mobile-button"
+                onClick={() => handleSmoothScroll('sobre-nos')}
+              >
                 Saiba Mais
               </Button>
             </motion.div>
           )}
         </AnimatePresence>
 
-        <Button variant="default" className="brown desktop-button">
+        <Button 
+          variant="default" 
+          className="brown desktop-button"
+          onClick={() => handleSmoothScroll('sobre-nos')}
+        >
           Saiba Mais
         </Button>
 
