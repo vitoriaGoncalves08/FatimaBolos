@@ -33,7 +33,17 @@ export const Header = () => {
     <header className="container-header">
       <div className="nav-container">
 
-        <img src={Logo} alt="Fátima Bolos" className="logo" />
+        <button
+          type="button"
+          className="logo-button"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setIsMenuOpen(false);
+          }}
+          aria-label="Ir para o início"
+        >
+          <img src={Logo} alt="Fátima Bolos" className="logo" />
+        </button>
 
         <nav className="links desktop-only">
           <NavLinks />
