@@ -63,7 +63,7 @@ export const ContactUs: React.FC = () => {
       const body = encodeURIComponent(
         `Nome: ${formData.name}\nE-mail: ${formData.email}\n\nMensagem:\n${formData.message}`
       );
-      window.location.href = `mailto:contato@fatimabolos.com.br?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:vigoncalvesp@gmail.com?subject=${subject}&body=${body}`;
       
       // Clear form after redirection
       setFormData({ name: '', email: '', message: '' });
@@ -83,7 +83,7 @@ export const ContactUs: React.FC = () => {
       const message = encodeURIComponent(
         `*Contato via site - Fátima Bolos*\n\n*Nome:* ${formData.name}\n*E-mail:* ${formData.email}\n\n*Mensagem:*\n${formData.message}`
       );
-      window.open(`https://wa.me/5511943658985?text=${message}`, '_blank');
+      window.open(`https://wa.me/5511941117140?text=${message}`, '_blank');
       
       // Clear form after redirection
       setFormData({ name: '', email: '', message: '' });
