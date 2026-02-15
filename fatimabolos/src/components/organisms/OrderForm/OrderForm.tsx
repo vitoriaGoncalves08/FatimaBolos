@@ -10,6 +10,16 @@ import IceCreamIcon from '../../../assets/img/IceCream.svg';
 import PlusIcon from '../../../assets/img/Plus.svg';
 import LogoFb from '../../../assets/img/logo-fb.svg';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import {
+  DELICIAS_COLUMNS,
+  FILLING_BUILD,
+  FILLING_COMBOS,
+  PASTEL_FLAVORS,
+  PASTEL_OPTIONS,
+  PRICES,
+  SALGADOS_COLUMNS,
+  TIME_SLOTS,
+} from './orderFormData';
 
 interface OrderData {
   date: Date | null;
@@ -56,6 +66,14 @@ export const OrderForm: React.FC = () => {
   const [isOrderSectionInView, setIsOrderSectionInView] = useState(true);
   const [isCartSummaryOpen, setIsCartSummaryOpen] = useState(false);
   const cartSummaryRef = useRef<HTMLDivElement | null>(null);
+
+  const [toast, setToast] = useState<{ show: boolean; message: string; type: 'error' }>(
+    {
+      show: false,
+      message: '',
+      type: 'error',
+    }
+  );
   
   const [orderData, setOrderData] = useState<OrderData>({
     date: null,
@@ -88,65 +106,7 @@ export const OrderForm: React.FC = () => {
     { id: 2, icon: VectorIcon, label: 'Salgados' },
     { id: 3, icon: BoloIcon, label: 'Base do bolo' },
     { id: 4, icon: IceCreamIcon, label: 'Recheio' },
-    { id: 5, icon: PlusIcon, label: 'Adicionais' }
-  ];
-
-  const deliciasColumns = [
-    {
-      title: 'Tortas doces',
-      items: [
-        { id: 'delicia-b1', name: 'Banoffe P', price: 50.0, unit: 'R$ 50,00' },
-        { id: 'delicia-l1', name: 'Limão P', price: 50.0, unit: 'R$ 50,00' },
-        { id: 'delicia-b2', name: 'Banoffe G', price: 65.0, unit: 'R$ 65,00' },
-        { id: 'delicia-l2', name: 'Limão G', price: 65.0, unit: 'R$ 65,00' },
-      ],
-    },
-    {
-      title: 'Torta de Frango',
-      description: 'Torta de frango com milho, ervilha, azeitona, tomate',
-      highlight: '1Kg',
-      items: [{ id: 'delicia-fr1', name: '', price: 50.0, unit: 'R$ 50,00/Cento' }],
-    },
-    {
-      title: 'Pudim',
-      description: 'Pudim cremoso de leite condensado com calda',
-      items: [
-        { id: 'delicia-pud-p', name: 'Pudim P', price: 20.0, unit: 'R$ 20,00/400g' },
-        { id: 'delicia-pud-m', name: 'Pudim M', price: 35.0, unit: 'R$ 35,00/800g' },
-        { id: 'delicia-pud-g', name: 'Pudim G', price: 50.0, unit: 'R$ 50,00/1kg' },
-      ],
-    },
-    {
-      title: 'Bolo de Pote',
-      description: 'Bolo de pote de chocolate com cobertura de chocolate e granulado',
-      highlight: '500g',
-      items: [{ id: 'delicia-bp1', name: '', price: 8.0, unit: 'R$ 8,00/Cada' }],
-    },
-  ];
-
-  const salgadosColumns = [
-    {
-      title: 'Mini Salgados de festa',
-      items: [
-        { id: 'sal-mini-cox', name: 'Coxinha de frango', price: 50.0, unit: 'R$ 50,00/Cento' },
-        { id: 'sal-mini-bol', name: 'Bolinho de queijo', price: 50.0, unit: 'R$ 50,00/Cento' },
-        { id: 'sal-mini-pas', name: 'Pastel', price: 50.0, unit: 'R$ 50,00/Cento' },
-        { id: 'sal-mini-kib', name: 'Kibe', price: 50.0, unit: 'R$ 50,00/Cento' },
-        { id: 'sal-mini-ris', name: 'Risole', price: 50.0, unit: 'R$ 50,00/Cento' },
-        { id: 'sal-mini-enr', name: 'Enrolado de salsicha', price: 50.0, unit: 'R$ 50,00/Cento' },
-      ],
-    },
-    {
-      title: 'Salgados tamanho padrão',
-      items: [
-        { id: 'sal-pad-cox', name: 'Coxinha de frango', price: 5.0, unit: 'R$ 05,00/Uni.' },
-        { id: 'sal-pad-bol', name: 'Bolinho de queijo', price: 5.0, unit: 'R$ 05,00/Uni.' },
-        { id: 'sal-pad-pas', name: 'Pastel', price: 5.0, unit: 'R$ 05,00/Uni.' },
-        { id: 'sal-pad-kib', name: 'Kibe', price: 5.0, unit: 'R$ 05,00/Uni.' },
-        { id: 'sal-pad-ris', name: 'Risole', price: 5.0, unit: 'R$ 05,00/Uni.' },
-        { id: 'sal-pad-enr', name: 'Enrolado de salsicha', price: 5.0, unit: 'R$ 05,00/Uni.' },
-      ],
-    },
+    { id: 5, icon: PlusIcon, label: 'Adicionais' },
   ];
 
   const setItemQuantity = (
@@ -178,12 +138,7 @@ export const OrderForm: React.FC = () => {
     });
   };
 
-  const timeSlots = [
-    '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-    '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30',
-    '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30',
-    '20:00','20:30','21:00','21:30','22:00','22:30','23:00','23:30'
-  ];
+  const timeSlots = TIME_SLOTS;
 
   const daysInMonth = (date: Date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -239,9 +194,8 @@ export const OrderForm: React.FC = () => {
     const savoriesTotal = orderData.savories.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const sizeKg = Number(orderData.base.tamanhoKg || 0);
     const hasCakeBaseStarted = Boolean(orderData.base.massa || orderData.base.formato || orderData.base.tamanhoKg);
-    const fillingsPricePerKg = 50;
-    const fillingsTotal = hasCakeBaseStarted && orderData.fillings.length > 0 ? sizeKg * fillingsPricePerKg : 0;
-    const topperTotal = orderData.adicionais.topper?.trim() ? 20 : 0;
+    const fillingsTotal = hasCakeBaseStarted && orderData.fillings.length > 0 ? sizeKg * PRICES.fillingsPerKg : 0;
+    const topperTotal = orderData.adicionais.topper?.trim() ? PRICES.topper : 0;
 
     return cakesTotal + savoriesTotal + fillingsTotal + topperTotal;
   };
@@ -250,6 +204,65 @@ export const OrderForm: React.FC = () => {
   const isCakeBaseComplete = !hasCakeBaseStarted
     ? true
     : Boolean(orderData.base.massa && orderData.base.formato && orderData.base.tamanhoKg);
+
+  const deliveryStarted = Boolean(
+    orderData.adicionais.delivery.address?.trim() ||
+      orderData.adicionais.delivery.number?.trim() ||
+      orderData.adicionais.delivery.complement?.trim()
+  );
+  const isDeliveryComplete = !deliveryStarted
+    ? true
+    : Boolean(
+        orderData.adicionais.delivery.address?.trim() &&
+          orderData.adicionais.delivery.number?.trim() &&
+          orderData.adicionais.delivery.complement?.trim()
+      );
+
+  const nextDisabledReason = (() => {
+    if (currentStep === 0 && (!selectedDate || !selectedTime)) {
+      if (!selectedDate && !selectedTime) return 'Selecione a data e o horário.';
+      if (!selectedDate) return 'Selecione a data.';
+      return 'Selecione o horário.';
+    }
+
+    if (currentStep === 3) {
+      if (!isCakeBaseComplete) return 'Complete a base do bolo (massa, formato e tamanho).';
+      if (hasCakeBaseStarted && !orderData.adicionais.theme.trim()) return 'Informe o tema do bolo.';
+    }
+
+    if (currentStep === 4 && hasCakeBaseStarted && orderData.fillings.length === 0) {
+      return 'Selecione o recheio do bolo.';
+    }
+
+    if (currentStep === 5) {
+      if (deliveryStarted && !isDeliveryComplete) return 'Complete todos os campos de entrega ou deixe todos vazios.';
+      if (!orderData.adicionais.customerName.trim()) return 'Informe seu nome.';
+    }
+
+    return '';
+  })();
+
+  const isNextDisabled = Boolean(nextDisabledReason);
+
+  const whatsappDisabledReason = (() => {
+    if (!selectedDate || !selectedTime) return 'Selecione data e horário.';
+    if (deliveryStarted && !isDeliveryComplete) return 'Complete todos os campos de entrega ou deixe todos vazios.';
+    if (!orderData.adicionais.customerName.trim()) return 'Informe seu nome.';
+    if (orderData.cakes.length === 0 && orderData.savories.length === 0) return 'Adicione pelo menos 1 item (delícias ou salgados).';
+    if (hasCakeBaseStarted && !isCakeBaseComplete) return 'Complete a base do bolo (massa, formato e tamanho).';
+    if (hasCakeBaseStarted && orderData.fillings.length === 0) return 'Selecione o recheio do bolo.';
+    if (hasCakeBaseStarted && !orderData.adicionais.theme.trim()) return 'Informe o tema do bolo.';
+    return '';
+  })();
+
+  const isWhatsAppDisabled = Boolean(whatsappDisabledReason);
+
+  const showToast = (message: string) => {
+    setToast({ show: true, message, type: 'error' });
+    window.setTimeout(() => {
+      setToast({ show: false, message: '', type: 'error' });
+    }, 2800);
+  };
 
   const getTotalItems = () => {
     const cakesCount = orderData.cakes.reduce((sum, item) => sum + item.quantity, 0);
@@ -336,7 +349,7 @@ export const OrderForm: React.FC = () => {
     })();
 
     const message = `
-🎂 *NOVA ENCOMENDA - FÁTIMA BOLOS* 🎂
+*NOVA ENCOMENDA - FÁTIMA BOLOS*
 
 📅 *Data e Horário:*
 ${orderData.date ? orderData.date.toLocaleDateString('pt-BR') : 'Não selecionado'} às ${orderData.time || 'Não selecionado'}
@@ -347,14 +360,14 @@ Nome: ${orderData.adicionais.customerName || 'Não informado'}
 🚚 *Entrega (opcional):*
 ${orderData.adicionais.delivery.address ? `Endereço: ${orderData.adicionais.delivery.address}, ${orderData.adicionais.delivery.number || 's/n'}${orderData.adicionais.delivery.complement ? ` - ${orderData.adicionais.delivery.complement}` : ''}` : 'Retirada / não informado'}
 
-� *Delícias (tortas, pudim, bolo de pote):*
+*Delícias (tortas, pudim, bolo de pote):*
 ${orderData.cakes.length > 0 ? orderData.cakes.map(cake => `- ${cake.name} (${cake.quantity}x) - R$ ${cake.price.toFixed(2)}`).join('\n') : 'Nenhum'}
 
 🥟 *Salgados:*
 ${orderData.savories.length > 0 ? orderData.savories.map(item => `- ${item.name} (${item.quantity}x) - R$ ${item.price.toFixed(2)}`).join('\n') : 'Nenhum'}
 ${pastelLines}
 
-� *Bolo (base):*
+*Bolo (base):*
 Massa: ${orderData.base.massa || 'Não selecionado'}
 Formato: ${orderData.base.formato || 'Não selecionado'}
 Tamanho: ${orderData.base.tamanhoKg ? `${orderData.base.tamanhoKg} kg` : 'Não selecionado'}
@@ -439,7 +452,6 @@ ${orderData.observations || 'Nenhuma'}
             <div
               key={step.id}
               className={`progress-item ${currentStep === step.id ? 'active' : ''} ${currentStep > step.id ? 'done' : ''}`}
-              onClick={() => setCurrentStep(step.id)}
             >
               <div className="progress-icon">
                 <img src={step.icon} alt={step.label} />
@@ -545,7 +557,7 @@ ${orderData.observations || 'Nenhuma'}
                         <h4 className="selection-card-title">Tortas doces</h4>
                       </div>
                       <div className="selection-card-body">
-                        {deliciasColumns[0].items.map((item) => {
+                        {DELICIAS_COLUMNS[0].items.map((item) => {
                           const existing = orderData.cakes.find(x => x.id === item.id);
                           const quantity = existing ? existing.quantity : 0;
                           return (
@@ -586,7 +598,7 @@ ${orderData.observations || 'Nenhuma'}
                         <p className="selection-card-desc">Pudim cremoso de leite condensado com calda</p>
                       </div>
                       <div className="selection-card-body">
-                        {deliciasColumns[2].items.map((item) => {
+                        {DELICIAS_COLUMNS[2].items.map((item) => {
                           const existing = orderData.cakes.find(x => x.id === item.id);
                           const quantity = existing ? existing.quantity : 0;
                           return (
@@ -630,7 +642,7 @@ ${orderData.observations || 'Nenhuma'}
                         <span className="selection-card-highlight">1Kg</span>
                       </div>
                       <div className="selection-card-body">
-                        {deliciasColumns[1].items.map((item) => {
+                        {DELICIAS_COLUMNS[1].items.map((item) => {
                           const existing = orderData.cakes.find(x => x.id === item.id);
                           const quantity = existing ? existing.quantity : 0;
                           return (
@@ -672,7 +684,7 @@ ${orderData.observations || 'Nenhuma'}
                         <span className="selection-card-highlight">500g</span>
                       </div>
                       <div className="selection-card-body">
-                        {deliciasColumns[3].items.map((item) => {
+                        {DELICIAS_COLUMNS[3].items.map((item) => {
                           const existing = orderData.cakes.find(x => x.id === item.id);
                           const quantity = existing ? existing.quantity : 0;
                           return (
@@ -718,7 +730,7 @@ ${orderData.observations || 'Nenhuma'}
 
               <div className="order-selection-box">
                 <div className="selection-grid selection-grid--salgados">
-                  {salgadosColumns.map((col) => (
+                  {SALGADOS_COLUMNS.map((col) => (
                     <div key={col.title} className="selection-column">
                       <div className="selection-card">
                         <div className="selection-card-header">
@@ -765,13 +777,7 @@ ${orderData.observations || 'Nenhuma'}
               </div>
 
               {(() => {
-                const pastelOptions = [
-                  { id: 'sal-mini-pas', label: 'Pastel (Cento)' },
-                  { id: 'sal-pad-pas', label: 'Pastel (Uni.)' },
-                ];
-
-                const flavors = ['Queijo', 'Carne', 'Frango', 'Frango com catupiry'];
-                const selectedPastels = pastelOptions
+                const selectedPastels = PASTEL_OPTIONS
                   .map((p) => {
                     const item = orderData.savories.find((x) => x.id === p.id);
                     return { ...p, quantity: item?.quantity ?? 0 };
@@ -803,7 +809,7 @@ ${orderData.observations || 'Nenhuma'}
                             </div>
 
                             <div className="selection-card-body">
-                              {flavors.map((flavor) => {
+                              {PASTEL_FLAVORS.map((flavor) => {
                                 const qty = current[flavor] ?? 0;
                                 const canInc = totalSelected + stepSize <= maxPieces;
 
@@ -854,7 +860,10 @@ ${orderData.observations || 'Nenhuma'}
 
               <div className="order-selection-box">
                 <div className="form-group">
-                  <label htmlFor="massa">Massa</label>
+                  <label htmlFor="massa">
+                    Massa
+                    {hasCakeBaseStarted ? <span className="required"> *</span> : null}
+                  </label>
                   <select
                     id="massa"
                     className="time-select"
@@ -869,7 +878,10 @@ ${orderData.observations || 'Nenhuma'}
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="formato">Formato</label>
+                  <label htmlFor="formato">
+                    Formato
+                    {hasCakeBaseStarted ? <span className="required"> *</span> : null}
+                  </label>
                   <select
                     id="formato"
                     className="time-select"
@@ -884,7 +896,10 @@ ${orderData.observations || 'Nenhuma'}
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="tamanhoKg">Tamanho (kg)</label>
+                  <label htmlFor="tamanhoKg">
+                    Tamanho (kg)
+                    {hasCakeBaseStarted ? <span className="required"> *</span> : null}
+                  </label>
                   <select
                     id="tamanhoKg"
                     className="time-select"
@@ -931,25 +946,8 @@ ${orderData.observations || 'Nenhuma'}
               <h3>Qual será o recheio do bolo?</h3>
 
               {(() => {
-                const combos = [
-                  'Abacaxi + Doce de leite',
-                  'Creme de confeiteiro + Pêssego',
-                  'Creme de confeiteiro + Morango',
-                  'Creme de leite + ameixa',
-                  'Morango + Leite ninho',
-                ];
-
-                const monte = [
-                  'Chocolate',
-                  'Coco',
-                  'Musse de Maracujá',
-                  'Leite ninho',
-                  'Morango',
-                  'Creme de confeiteiro',
-                  'Pêssego',
-                  'Abacaxi',
-                  'Ameixa',
-                ];
+                const combos = [...FILLING_COMBOS] as string[];
+                const monte = [...FILLING_BUILD] as string[];
 
                 const selectedCombo = orderData.fillings.find((x) => combos.includes(x));
                 const selectedNonCombo = orderData.fillings.filter((x) => monte.includes(x));
@@ -1009,9 +1007,6 @@ ${orderData.observations || 'Nenhuma'}
                             >
                               <span className="recheio-row-title">{name}</span>
                               <span className="recheio-row-right">
-                                <span className="selection-pill selection-pill--price-only">
-                                  <span className="selection-pill-price">R$: 50,00/kg</span>
-                                </span>
                                 <input
                                   type="checkbox"
                                   checked={checked}
@@ -1036,9 +1031,6 @@ ${orderData.observations || 'Nenhuma'}
                             >
                               <span className="recheio-row-title">{name}</span>
                               <span className="recheio-row-right">
-                                <span className="selection-pill selection-pill--price-only">
-                                  <span className="selection-pill-price">R$: 50,00/kg</span>
-                                </span>
                                 <input
                                   type="checkbox"
                                   checked={checked}
@@ -1076,7 +1068,7 @@ ${orderData.observations || 'Nenhuma'}
 
                 <div className="form-group">
                   <label htmlFor="topper" className="label-with-tag">
-                    Topo do bolo
+                    Topo do bolo 
                     <span className="label-tag">R$: 20,00</span>
                   </label>
                   <p className="field-description">Deseja um topo para seu bolo? exemplo: Diga um nome, tema, personagem</p>
@@ -1090,7 +1082,10 @@ ${orderData.observations || 'Nenhuma'}
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="deliveryAddress">Entrega</label>
+                  <label htmlFor="deliveryAddress">
+                    Entrega
+                    {deliveryStarted ? <span className="required"> *</span> : null}
+                  </label>
                   <p className="field-description">Caso deseje que seja feita a verificação de possibilidade de entrega</p>
 
                   <div className="delivery-row">
@@ -1099,21 +1094,21 @@ ${orderData.observations || 'Nenhuma'}
                       type="text"
                       value={orderData.adicionais.delivery.address}
                       onChange={(e) => updateOrderData('adicionais', { ...orderData.adicionais, delivery: { ...orderData.adicionais.delivery, address: e.target.value } })}
-                      placeholder="Cep"
+                      placeholder={deliveryStarted ? 'Cep *' : 'Cep'}
                     />
 
                     <input
                       type="text"
                       value={orderData.adicionais.delivery.number}
                       onChange={(e) => updateOrderData('adicionais', { ...orderData.adicionais, delivery: { ...orderData.adicionais.delivery, number: e.target.value } })}
-                      placeholder="Número"
+                      placeholder={deliveryStarted ? 'Número *' : 'Número'}
                     />
 
                     <input
                       type="text"
                       value={orderData.adicionais.delivery.complement}
                       onChange={(e) => updateOrderData('adicionais', { ...orderData.adicionais, delivery: { ...orderData.adicionais.delivery, complement: e.target.value } })}
-                      placeholder="Complemento"
+                      placeholder={deliveryStarted ? 'Complemento *' : 'Complemento'}
                     />
                   </div>
                 </div>
@@ -1147,38 +1142,79 @@ ${orderData.observations || 'Nenhuma'}
           )}
           
           {currentStep < steps.length - 1 ? (
-            <Button
-              variant="default"
-              className="btn-next"
-              onClick={handleNext}
-              disabled={
-                (currentStep === 0 && (!selectedDate || !selectedTime)) ||
-                (currentStep === 3 && !isCakeBaseComplete) ||
-                (currentStep === 3 && hasCakeBaseStarted && !orderData.adicionais.theme.trim()) ||
-                (currentStep === 4 && hasCakeBaseStarted && orderData.fillings.length === 0) ||
-                (currentStep === 5 && !orderData.adicionais.customerName)
-              }
+            <span
+              className="btn-tooltip-wrapper"
             >
-              Próximo
-              <ArrowForwardIcon className="btn-next-icon" />
-            </Button>
+              <Button
+                variant="default"
+                className="btn-next"
+                onClick={handleNext}
+                disabled={isNextDisabled}
+              >
+                Próximo
+                <ArrowForwardIcon className="btn-next-icon" />
+              </Button>
+              {isNextDisabled && nextDisabledReason && (
+                <span
+                  className="btn-disabled-overlay"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={nextDisabledReason}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showToast(nextDisabledReason);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      showToast(nextDisabledReason);
+                    }
+                  }}
+                />
+              )}
+            </span>
           ) : (
-            <Button
-              variant="default"
-              className="btn-next"
-              onClick={() => window.open(generateWhatsAppMessage(), '_blank')}
-              disabled={
-                !selectedDate || 
-                !selectedTime || 
-                !orderData.adicionais.customerName ||
-                (orderData.cakes.length === 0 && orderData.savories.length === 0)
-              }
+            <span
+              className="btn-tooltip-wrapper"
             >
-              Encomendar via WhatsApp
-            </Button>
+              <Button
+                variant="default"
+                className="btn-next"
+                onClick={() => window.open(generateWhatsAppMessage(), '_blank')}
+                disabled={isWhatsAppDisabled}
+              >
+                Encomendar via WhatsApp
+              </Button>
+              {isWhatsAppDisabled && whatsappDisabledReason && (
+                <span
+                  className="btn-disabled-overlay"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={whatsappDisabledReason}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showToast(whatsappDisabledReason);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      showToast(whatsappDisabledReason);
+                    }
+                  }}
+                />
+              )}
+            </span>
           )}
         </div>
       </div>
+
+      {toast.show && (
+        <div className={`toast toast-${toast.type}`}>{toast.message}</div>
+      )}
 
       {/* Floating Cart */}
       <div

@@ -3,6 +3,63 @@
   padding: 4rem 0;
 }
 
+@media (max-width: 480px) {
+  .order-content {
+    padding: 0.75rem;
+    border-radius: 12px;
+    min-height: 560px;
+  }
+
+  .step-content h3 {
+    font-size: 1.15rem;
+    text-align: left;
+    margin: 0.25rem 0 0.75rem;
+  }
+
+  .datetime-layout {
+    gap: 1rem;
+  }
+
+  .calendar-container {
+    padding: 0.75rem;
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid var(--color-secondary-200);
+  }
+
+  .calendar-header h4 {
+    font-size: 1rem;
+  }
+
+  .calendar-weekday {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.1rem;
+  }
+
+  .calendar-day {
+    font-size: 0.95rem;
+  }
+
+  .time-selection h4,
+  .selected-items h4 {
+    font-size: 1rem;
+  }
+
+  .time-select {
+    font-size: 1rem;
+    padding: 0.85rem;
+  }
+
+  .selected-item {
+    padding: 0.9rem;
+  }
+
+  .selected-item .label,
+  .selected-item .value {
+    font-size: 1rem;
+  }
+}
+
 .order-form-container {
   max-width: 1600px;
   margin: 0 auto;
@@ -279,11 +336,12 @@
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  cursor: pointer;
+  cursor: default;
   transition: var(--transition);
   position: relative;
   z-index: 2;
   flex: 1;
+  pointer-events: none;
 }
 
 .progress-icon {
@@ -468,7 +526,7 @@
 }
 
 .selected-item .value {
-  color: var(--color-primary);
+  color: var(--color-secondary-100);
   font-weight: 500;
   font-family: var(--font-main);
 }
@@ -926,6 +984,7 @@
   color: var(--color-white);
   font-size: 0.8rem;
   font-weight: 600;
+  margin-left: 0.5rem;
 }
 
 .delivery-row {
@@ -1139,6 +1198,72 @@
   transform: none;
 }
 
+.btn-tooltip-wrapper {
+  display: inline-flex;
+  position: relative;
+}
+
+.btn-disabled-overlay {
+  position: absolute;
+  inset: 0;
+  cursor: not-allowed;
+  background: transparent;
+  border-radius: inherit;
+}
+
+/* Toast Notifications (same pattern as ContactUs) */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius);
+  color: var(--color-white);
+  font-family: var(--font-main);
+  font-size: var(--font-size-sm);
+  z-index: 1200;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: min(420px, calc(100vw - 40px));
+}
+
+.toast-error {
+  background-color: var(--color-danger);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .toast {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    max-width: unset;
+    font-size: 0.95rem;
+    padding: 0.9rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-summary {
+    left: 2%;
+    right: 2%;
+    width: 96%;
+    max-width: 100%;
+    bottom: 5rem;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .order-form-section {
@@ -1177,6 +1302,7 @@
   
   .progress-line {
     top: 20px;
+    left: 90%;
   }
   
   .datetime-layout {
@@ -1190,7 +1316,7 @@
   }
   
   .time-and-selection {
-    min-width: auto;
+    min-width: 100%;
   }
   
   .time-slots-grid {
@@ -1199,7 +1325,8 @@
   }
   
   .order-content {
-    padding: 1.5rem;
+    padding: 1rem;
+    margin-top: 1rem;
   }
 
   .order-selection-box {
@@ -1288,6 +1415,18 @@
 }
 
 @media (max-width: 480px) {
+
+  .time-and-selection .selected-items {
+    padding: 0;
+    margin: 0;
+    box-shadow:none;
+  } 
+
+  .time-and-selection .selected-info {
+    padding: 0;
+    margin: 0;
+  } 
+  
   .progress-menu {
     gap: 0.25rem;
     padding: 0 0.5rem;
@@ -1366,13 +1505,32 @@
   }
   
   .calendar-day {
-    font-size: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .calendar-weekday {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.1rem;
+  }
+
+  .calendar-header h4 {
+    font-size: 1rem;
+  }
+
+  .time-selection h4,
+  .selected-items h4 {
+    font-size: 1rem;
+  }
+
+  .time-select {
+    font-size: 1rem;
+    padding: 0.85rem;
   }
   
   .form-group input,
   .form-group textarea {
-    padding: 0.5rem;
-    font-size: 0.875rem;
+    padding: 0.6rem;
+    font-size: 1rem;
   }
   
   .product-card {
