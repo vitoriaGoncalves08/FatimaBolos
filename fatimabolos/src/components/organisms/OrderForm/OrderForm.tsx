@@ -197,10 +197,10 @@ export const OrderForm: React.FC = () => {
     const hasCakeBaseStarted = Boolean(orderData.base.massa || orderData.base.formato || orderData.base.tamanhoKg);
     const massaPricePerKg = orderData.base.massa ? CAKE_MASSA_PRICE_PER_KG[orderData.base.massa] : undefined;
     const massaTotal = hasCakeBaseStarted && sizeKg > 0 && massaPricePerKg ? sizeKg * massaPricePerKg : 0;
-    const fillingsTotal = hasCakeBaseStarted && orderData.fillings.length > 0 ? sizeKg * PRICES.fillingsPerKg : 0;
+    // Removido: fillingsTotal - recheios não têm custo adicional
     const topperTotal = orderData.adicionais.topper?.trim() ? PRICES.topper : 0;
 
-    return cakesTotal + savoriesTotal + massaTotal + fillingsTotal + topperTotal;
+    return cakesTotal + savoriesTotal + massaTotal + topperTotal;
   };
 
   const hasCakeBaseStarted = Boolean(orderData.base.massa || orderData.base.formato || orderData.base.tamanhoKg);
@@ -1314,8 +1314,38 @@ ${orderData.observations || 'Nenhuma'}
                 <span>{orderData.adicionais.topper?.trim() ? 'Sim' : '-'}</span>
               </div>
 
-              {(orderData.cakes.length > 0 || orderData.savories.length > 0) && (
+              {hasCakeBaseStarted && (
+                <div className="cart-summary-row">
+                  <span><strong>TOTAL DO BOLO</strong></span>
+                  <span><strong>R$ {(() => {
+                    const sizeKg = Number(orderData.base.tamanhoKg || 0);
+                    const massaPricePerKg = orderData.base.massa ? CAKE_MASSA_PRICE_PER_KG[orderData.base.massa] : undefined;
+                    const massaTotal = sizeKg > 0 && massaPricePerKg ? sizeKg * massaPricePerKg : 0;
+                    const topperTotal = orderData.adicionais.topper?.trim() ? PRICES.topper : 0;
+                    return (massaTotal + topperTotal).toFixed(2);
+                  })()}</strong></span>
+                </div>
+              )}
+
+              {(orderData.cakes.length > 0 || orderData.savories.length > 0 || hasCakeBaseStarted) && (
                 <div className="cart-summary-items">
+                  {(() => {
+                    const sizeKg = Number(orderData.base.tamanhoKg || 0);
+                    const massaPricePerKg = orderData.base.massa ? CAKE_MASSA_PRICE_PER_KG[orderData.base.massa] : undefined;
+                    const massaTotal = hasCakeBaseStarted && sizeKg > 0 && massaPricePerKg ? sizeKg * massaPricePerKg : 0;
+                    
+                    // Debug: mostrar sempre que houver base do bolo iniciada
+                    if (hasCakeBaseStarted) {
+                      return (
+                        <div className="cart-summary-item">
+                          <span>Bolo {orderData.base.massa || 'Massa não selecionada'} ({orderData.base.tamanhoKg || 0}kg)</span>
+                          <span>R$ {massaTotal > 0 ? massaTotal.toFixed(2) : '0.00'}</span>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })()}
+                  
                   {orderData.cakes.map((item) => (
                     <div key={item.id} className="cart-summary-item">
                       <span>{item.name || 'Item'} ({item.quantity}x)</span>
@@ -1329,6 +1359,19 @@ ${orderData.observations || 'Nenhuma'}
                       <span>R$ {(item.price * item.quantity).toFixed(2)}</span>
                     </div>
                   ))}
+
+                  {(() => {
+                    const topperTotal = orderData.adicionais.topper?.trim() ? PRICES.topper : 0;
+                    if (topperTotal > 0) {
+                      return (
+                        <div className="cart-summary-item">
+                          <span>Topper do bolo</span>
+                          <span>R$ {topperTotal.toFixed(2)}</span>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })()}
 
                   {(() => {
                     const pastels = [
