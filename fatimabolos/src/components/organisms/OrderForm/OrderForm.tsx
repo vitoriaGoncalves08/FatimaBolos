@@ -388,7 +388,7 @@ ${orderData.observations || 'Nenhuma'}
     `.trim();
     
     const encodedMessage = encodeURIComponent(message);
-    return `https://wa.me/5511943658985?text=${encodedMessage}`;
+    return `https://wa.me/5511941117140?text=${encodedMessage}`;
   };
 
   
