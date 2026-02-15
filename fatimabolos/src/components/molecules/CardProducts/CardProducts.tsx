@@ -9,6 +9,20 @@ interface CardProductsProps {
   category?: string;
 }
 
+const handleOrderRedirect = () => {
+  const element = document.getElementById('encomenda');
+  if (element) {
+    const headerHeight = 80; // Account for fixed header height
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - headerHeight;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+};
+
 const CardProducts: React.FC<CardProductsProps> = ({
   image,
   title,
@@ -26,7 +40,7 @@ const CardProducts: React.FC<CardProductsProps> = ({
         <h3 className="card-title">{title}</h3>
         <p className="card-description">{description}</p>
         <p className="card-price">{price}</p>
-          <button className="card-button">Comprar</button>
+          <button className="card-button" onClick={handleOrderRedirect}>Comprar</button>
        
       </div>
     </div>

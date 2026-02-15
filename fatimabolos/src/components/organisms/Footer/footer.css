@@ -9,10 +9,12 @@
   position: relative;
   width: 100%;
   margin-bottom: -1px;
+  line-height: 0;
 }
 
 .wave-img {
   width: 100%;
+  height: clamp(48px, 12vw, 140px);
   object-fit: cover;
   display: block;
 }
@@ -70,7 +72,7 @@ background-color: var(--color-secondary-100);
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .footer-wave {
-    height: 60px;
+    height: auto;
   }
   
   .footer-content {
@@ -93,7 +95,7 @@ background-color: var(--color-secondary-100);
 
 @media (max-width: 480px) {
   .footer-wave {
-    height: 40px;
+    height: auto;
   }
   
   .footer-content {

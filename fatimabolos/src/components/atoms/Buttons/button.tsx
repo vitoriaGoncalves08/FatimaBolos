@@ -28,7 +28,7 @@ export const Button = ({
       disabled={disabled}
     >
       {variant === 'iconLeft' && icon && <span className="btn-icon left">{icon}</span>}
-      <span>{children}</span>
+      <span className="btn-content">{children}</span>
       {variant === 'iconRight' && icon && <span className="btn-icon right">{icon}</span>}
     </button>
   );

@@ -1,8 +1,12 @@
 import "./navlinks.css";
 
+interface NavLinksProps {
+  onCloseMenu?: () => void;
+}
+
 const links = ['Sobre nós', 'Produtos', 'Encomenda', 'Dúvidas', 'Contato'];
 
-const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, link: string, onCloseMenu?: () => void) => {
   e.preventDefault();
   
   const sectionIds: { [key: string]: string } = {
@@ -17,7 +21,7 @@ const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, link: string
   if (sectionId) {
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerHeight = -100; // Account for fixed header height
+      const headerHeight = 80; // Account for fixed header height
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - headerHeight;
       
@@ -27,9 +31,14 @@ const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, link: string
       });
     }
   }
+  
+  // Close mobile menu if onCloseMenu callback is provided
+  if (onCloseMenu) {
+    onCloseMenu();
+  }
 };
 
-export const NavLinks = () => {
+export const NavLinks: React.FC<NavLinksProps> = ({ onCloseMenu }) => {
   return (
     <>
       {links.map((link, index) => {
@@ -45,7 +54,7 @@ export const NavLinks = () => {
           <a 
             key={index} 
             href={`#${sectionIds[link]}`}
-            onClick={(e) => handleSmoothScroll(e, link)}
+            onClick={(e) => handleSmoothScroll(e, link, onCloseMenu)}
           >
             {link}
           </a>
