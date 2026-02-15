@@ -21,7 +21,7 @@ const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, link: string
   if (sectionId) {
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerHeight = -100; // Account for fixed header height
+      const headerHeight = 80; // Account for fixed header height
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - headerHeight;
       
