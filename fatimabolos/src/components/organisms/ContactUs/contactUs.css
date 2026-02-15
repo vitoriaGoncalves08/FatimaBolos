@@ -28,7 +28,7 @@
   background-position: center;
   background-repeat: no-repeat;
   border-radius: var(--border-radius-lg, 12px);
-  padding: 7rem;
+  padding: 2rem 7rem;
 }
 
 .contact-form-content {
