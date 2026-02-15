@@ -300,14 +300,14 @@ export const OrderForm: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToOrderSection = () => {
-    const section = orderSectionRef.current ?? document.getElementById('encomenda');
-    if (!section) return;
+  // const scrollToOrderSection = () => {
+  //   const section = orderSectionRef.current ?? document.getElementById('encomenda');
+  //   if (!section) return;
 
-    const headerHeight = 80;
-    const top = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-    window.scrollTo({ top, behavior: 'smooth' });
-  };
+  //   const headerHeight = 80;
+  //   const top = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+  //   window.scrollTo({ top, behavior: 'smooth' });
+  // };
 
   const generateWhatsAppMessage = () => {
     const pastelLines = (() => {

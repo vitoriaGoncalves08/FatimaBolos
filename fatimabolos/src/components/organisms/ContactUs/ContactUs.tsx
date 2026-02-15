@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../../atoms/Buttons/button';
 import { Title } from '../../atoms/Title/title';
-import fundoContato from '../../../assets/img/fundo-contato.svg';
 import iconEmail from '../../../assets/img/icon-email.png';
 import iconZap from '../../../assets/img/icon-zap.png';
 import './contactUs.css';
