@@ -115,3 +115,8 @@ export const PRICES = {
   fillingsPerKg: 50,
   topper: 20,
 } as const;
+
+export const CAKE_MASSA_PRICE_PER_KG: Record<string, number> = {
+  Chocolate: 80,
+  Baunilha: 70,
+};

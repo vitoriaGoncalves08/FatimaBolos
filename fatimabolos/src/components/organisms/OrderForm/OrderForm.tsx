@@ -11,6 +11,7 @@ import PlusIcon from '../../../assets/img/Plus.svg';
 import LogoFb from '../../../assets/img/logo-fb.svg';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import {
+  CAKE_MASSA_PRICE_PER_KG,
   DELICIAS_COLUMNS,
   FILLING_BUILD,
   FILLING_COMBOS,
@@ -194,10 +195,12 @@ export const OrderForm: React.FC = () => {
     const savoriesTotal = orderData.savories.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const sizeKg = Number(orderData.base.tamanhoKg || 0);
     const hasCakeBaseStarted = Boolean(orderData.base.massa || orderData.base.formato || orderData.base.tamanhoKg);
+    const massaPricePerKg = orderData.base.massa ? CAKE_MASSA_PRICE_PER_KG[orderData.base.massa] : undefined;
+    const massaTotal = hasCakeBaseStarted && sizeKg > 0 && massaPricePerKg ? sizeKg * massaPricePerKg : 0;
     const fillingsTotal = hasCakeBaseStarted && orderData.fillings.length > 0 ? sizeKg * PRICES.fillingsPerKg : 0;
     const topperTotal = orderData.adicionais.topper?.trim() ? PRICES.topper : 0;
 
-    return cakesTotal + savoriesTotal + fillingsTotal + topperTotal;
+    return cakesTotal + savoriesTotal + massaTotal + fillingsTotal + topperTotal;
   };
 
   const hasCakeBaseStarted = Boolean(orderData.base.massa || orderData.base.formato || orderData.base.tamanhoKg);
@@ -863,7 +866,17 @@ ${orderData.observations || 'Nenhuma'}
                   <label htmlFor="massa">
                     Massa
                     {hasCakeBaseStarted ? <span className="required"> *</span> : null}
+                    {orderData.base.massa && CAKE_MASSA_PRICE_PER_KG[orderData.base.massa] ? (
+                      <span className="label-tag">R$: {CAKE_MASSA_PRICE_PER_KG[orderData.base.massa]}/kg</span>
+                    ) : null}
                   </label>
+                  <div className="field-description">
+                    {(() => {
+                      const price = CAKE_MASSA_PRICE_PER_KG[orderData.base.massa];
+                      if (!orderData.base.massa || !price) return 'Selecione a massa para ver o valor por kg.';
+                      return `Valor da massa: R$ ${price.toFixed(2)}/kg`;
+                    })()}
+                  </div>
                   <select
                     id="massa"
                     className="time-select"
@@ -871,8 +884,8 @@ ${orderData.observations || 'Nenhuma'}
                     onChange={(e) => updateOrderData('base', { ...orderData.base, massa: e.target.value })}
                   >
                     <option value="">Selecione</option>
-                    <option value="Chocolate">Chocolate</option>
-                    <option value="Baunilha">Baunilha</option>
+                    <option value="Chocolate">Chocolate (R$ 80/kg)</option>
+                    <option value="Baunilha">Baunilha (R$ 70/kg)</option>
                     <option value="Mesclada">Mesclada</option>
                   </select>
                 </div>
