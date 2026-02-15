@@ -239,11 +239,12 @@
 
 @media (max-width: 480px) {
   .contact-us-container {
-    padding: 0 1rem;
+    padding: 0rem;
   }
   
   .contact-form-content {
     padding: 1.5rem 1rem;
+    margin-top: 1rem;
   }
   
   .contact-subtitle {
