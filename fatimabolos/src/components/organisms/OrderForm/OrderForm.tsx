@@ -251,7 +251,7 @@ export const OrderForm: React.FC = () => {
     if (!selectedDate || !selectedTime) return 'Selecione data e horário.';
     if (deliveryStarted && !isDeliveryComplete) return 'Complete todos os campos de entrega ou deixe todos vazios.';
     if (!orderData.adicionais.customerName.trim()) return 'Informe seu nome.';
-    if (orderData.cakes.length === 0 && orderData.savories.length === 0) return 'Adicione pelo menos 1 item (delícias ou salgados).';
+    // Removido: obrigatoriedade de delícias ou salgados
     if (hasCakeBaseStarted && !isCakeBaseComplete) return 'Complete a base do bolo (massa, formato e tamanho).';
     if (hasCakeBaseStarted && orderData.fillings.length === 0) return 'Selecione o recheio do bolo.';
     if (hasCakeBaseStarted && !orderData.adicionais.theme.trim()) return 'Informe o tema do bolo.';
